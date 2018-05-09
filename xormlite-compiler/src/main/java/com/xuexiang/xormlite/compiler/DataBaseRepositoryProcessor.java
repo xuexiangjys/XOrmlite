@@ -23,7 +23,9 @@ import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.ParameterizedTypeName;
+import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
+import com.squareup.javapoet.TypeVariableName;
 import com.xuexiang.xormlite.annotation.DataBase;
 import com.xuexiang.xormlite.enums.DataBaseType;
 import com.xuexiang.xormlite.util.Consts;
@@ -67,6 +69,7 @@ public class DataBaseRepositoryProcessor extends AbstractProcessor {
     private static final ClassName IDatabaseClassName = ClassName.get("com.xuexiang.xormlite.db", "IDatabase");
     private static final ClassName IExternalDataBaseClassName = ClassName.get("com.xuexiang.xormlite.db", "IExternalDataBase");
     private static final ClassName DBLogClassName = ClassName.get("com.xuexiang.xormlite.logs", "DBLog");
+    private static final TypeVariableName T =  TypeVariableName.get("T");
 
     private Filer mFiler; //文件相关的辅助类
     private Types mTypes;
@@ -241,15 +244,16 @@ public class DataBaseRepositoryProcessor extends AbstractProcessor {
 
                     MethodSpec getDataBaseMethod = MethodSpec.methodBuilder("getDataBase")
                             .addModifiers(Modifier.PUBLIC)
-                            .returns(DBServiceClassName)
-                            .addParameter(Class.class, "clazz", Modifier.FINAL)
+                            .addTypeVariable(T)
+                            .returns(ParameterizedTypeName.get(DBServiceClassName, T))
+                            .addParameter(ParameterizedTypeName.get(ClassName.get(Class.class), T), "clazz", Modifier.FINAL)
                             .addCode("$T dbService = null;\n" +
                                     "if (mDBPool.containsKey(clazz.getCanonicalName())) {\n" +
                                     "   dbService = mDBPool.get(clazz.getCanonicalName());\n" +
                                     "} else {\n" +
-                                    "   try {\n", DBServiceClassName)
+                                    "   try {\n", ParameterizedTypeName.get(DBServiceClassName, T))
                             .addCode(
-                                    getNewDBServiceCode(dataBase), DBServiceClassName)
+                                    getNewDBServiceCode(dataBase), ParameterizedTypeName.get(DBServiceClassName, T))
                             .addCode(
                                     "   } catch ($T e) {\n" +
                                     "       $T.e(e);\n" +

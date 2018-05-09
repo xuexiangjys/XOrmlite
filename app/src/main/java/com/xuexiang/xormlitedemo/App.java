@@ -25,6 +25,7 @@ import com.xuexiang.xormlite.ExternalDataBaseRepository;
 import com.xuexiang.xormlite.InternalDataBaseRepository;
 import com.xuexiang.xormlite.annotation.DataBase;
 import com.xuexiang.xormlite.enums.DataBaseType;
+import com.xuexiang.xormlite.logs.DBLog;
 import com.xuexiang.xormlitedemo.db.ExternalDataBase;
 import com.xuexiang.xormlitedemo.db.InternalDataBase;
 import com.xuexiang.xpage.AppPageConfig;
@@ -59,6 +60,8 @@ public class App extends Application {
         ExternalDataBaseRepository.getInstance()
                 .setIDatabase(new ExternalDataBase(ExternalDataBaseRepository.DATABASE_PATH, ExternalDataBaseRepository.DATABASE_NAME, ExternalDataBaseRepository.DATABASE_VERSION))
                 .init(this);
+
+        DBLog.debug(true);
     }
 
     /**

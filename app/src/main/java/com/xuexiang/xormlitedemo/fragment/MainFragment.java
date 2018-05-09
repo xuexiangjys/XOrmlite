@@ -40,7 +40,9 @@ public class MainFragment extends PageContainerListFragment {
      */
     @Override
     protected Class[] getPagesClasses() {
-        return new Class[0];
+        return new Class[]{
+                InternalDBFragment.class
+        };
     }
 
     @Override
