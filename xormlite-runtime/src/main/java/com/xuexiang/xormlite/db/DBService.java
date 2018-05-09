@@ -48,11 +48,17 @@ import java.util.concurrent.Callable;
 public class DBService<T> {
 
     private Context mContext;
-
+    /**
+     * 数据库操作Dao
+     */
     private Dao<T, Integer> mDao;
-
+    /**
+     * 数据库打开助手
+     */
     private OrmLiteSqliteOpenHelper mSqliteOpenHelper;
-
+    /**
+     * 数据库连接
+     */
     private DatabaseConnection mConnection;
     private Savepoint mSavePoint;
 
@@ -76,13 +82,14 @@ public class DBService<T> {
      *
      * @param context
      * @param clazz             数据库表实体类型
-     * @param databasePath      数据库的完整路径
+     * @param dbDirPath         数据库文件存放的根目录
+     * @param dbName            数据库文件的名称
      * @param databaseVersion   数据库版本号
      * @param iExternalDataBase 应用外部的数据库接口
      */
-    public DBService(Context context, Class<T> clazz, String databasePath, int databaseVersion, IExternalDataBase iExternalDataBase) throws SQLException {
+    public DBService(Context context, Class<T> clazz, String dbDirPath, String dbName, int databaseVersion, IExternalDataBase iExternalDataBase) throws SQLException {
         mContext = context.getApplicationContext();
-        mSqliteOpenHelper = new ExternalDBHelper(mContext, databasePath, databaseVersion, iExternalDataBase);
+        mSqliteOpenHelper = new ExternalDBHelper(mContext, dbDirPath, dbName, databaseVersion, iExternalDataBase);
         mDao = mSqliteOpenHelper.getDao(clazz);
     }
 
@@ -506,7 +513,6 @@ public class DBService<T> {
             mDao.endThreadConnection(mConnection);
         }
     }
-
 
 }
 

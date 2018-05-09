@@ -1,1 +1,1 @@
-include ':app', ':xormlite-runtime'
+include ':app', ':xormlite-runtime', ':xormlite-annotation', ':xormlite-compiler'

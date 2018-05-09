@@ -5,7 +5,7 @@ android {
     buildToolsVersion build_versions.build_tools
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 14
         targetSdkVersion build_versions.target_sdk
     }
 
@@ -19,8 +19,10 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     compileOnly deps.support.app_compat
 
-    implementation 'com.j256.ormlite:ormlite-android:5.1'
-    implementation 'com.j256.ormlite:ormlite-core:5.1'
+    api 'com.j256.ormlite:ormlite-android:5.1'
+    api 'com.j256.ormlite:ormlite-core:5.1'
+
+    api project(':xormlite-annotation')
 }
 
 apply from: "https://raw.githubusercontent.com/xuexiangjys/XUtil/master/JitPackUpload.gradle"

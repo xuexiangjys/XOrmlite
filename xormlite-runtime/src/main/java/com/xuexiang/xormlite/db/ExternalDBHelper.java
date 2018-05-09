@@ -22,6 +22,8 @@ import android.database.sqlite.SQLiteDatabase;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
 
+import java.io.File;
+
 /**
  * <pre>
  *     desc   : 应用外部(如SD卡等)数据库打开助手
@@ -32,9 +34,15 @@ import com.j256.ormlite.support.ConnectionSource;
 public class ExternalDBHelper extends OrmLiteSqliteOpenHelper {
 
     /**
-     * 数据库路径
+     * 数据库存放的根目录
      */
-    private String mDatabasePath;
+    private String mDBDirPath;
+
+    /**
+     * 数据库文件的名称
+     */
+    private String mDBName;
+
     /**
      * 应用外部数据库 实现接口
      */
@@ -42,13 +50,15 @@ public class ExternalDBHelper extends OrmLiteSqliteOpenHelper {
 
     /**
      * @param context
-     * @param databasePath      数据库的完整路径
+     * @param dbDirPath         数据库存放的根目录
+     * @param dbName            数据库文件的名称
      * @param databaseVersion   数据库版本号
      * @param iExternalDataBase 应用外部数据库 实现接口
      */
-    public ExternalDBHelper(Context context, String databasePath, int databaseVersion, IExternalDataBase iExternalDataBase) {
+    public ExternalDBHelper(Context context, String dbDirPath, String dbName, int databaseVersion, IExternalDataBase iExternalDataBase) {
         super(context, null, null, databaseVersion);
-        mDatabasePath = databasePath;
+        mDBDirPath = dbDirPath;
+        mDBName = dbName;
         mIExternalDataBase = iExternalDataBase;
 
         mIExternalDataBase.createOrOpenDB(connectionSource);
@@ -70,14 +80,22 @@ public class ExternalDBHelper extends OrmLiteSqliteOpenHelper {
 
     @Override
     public SQLiteDatabase getWritableDatabase() {
-        return SQLiteDatabase.openDatabase(mDatabasePath, null,
+        File dbFile = new File(mDBDirPath, mDBName);
+        if (!dbFile.exists()) {
+            dbFile.mkdirs();
+        }
+        return SQLiteDatabase.openDatabase(dbFile.getAbsolutePath(), null,
                 SQLiteDatabase.OPEN_READWRITE);
 
     }
 
     @Override
     public SQLiteDatabase getReadableDatabase() {
-        return SQLiteDatabase.openDatabase(mDatabasePath, null,
+        File dbFile = new File(mDBDirPath, mDBName);
+        if (!dbFile.exists()) {
+            dbFile.mkdirs();
+        }
+        return SQLiteDatabase.openDatabase(dbFile.getAbsolutePath(), null,
                 SQLiteDatabase.OPEN_READWRITE);
 
     }
