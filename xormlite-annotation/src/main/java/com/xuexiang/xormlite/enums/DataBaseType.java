@@ -29,7 +29,7 @@ public enum DataBaseType {
      */
     INTERNAL,
     /**
-     * 外部存储的数据库(数据库根目录路径默认为:/storage/emulated/0/Android/databases/xormlite/)
+     * 外部存储的数据库(数据库根目录路径默认为:/storage/emulated/0/Android/xormlite/databases/)
      */
     EXTERNAL
 

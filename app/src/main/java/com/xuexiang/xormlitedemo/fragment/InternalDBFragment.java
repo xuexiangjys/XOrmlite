@@ -34,7 +34,7 @@ import butterknife.OnClick;
 
 /**
  * <pre>
- *     desc   :
+ *     desc   : 内部存储数据库
  *     author : xuexiang
  *     time   : 2018/5/10 上午12:49
  * </pre>
@@ -56,7 +56,7 @@ public class InternalDBFragment extends BaseFragment {
      */
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_internal_db;
+        return R.layout.fragment_db;
     }
 
     /**

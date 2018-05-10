@@ -19,10 +19,13 @@ package com.xuexiang.xormlitedemo.fragment;
 import android.view.KeyEvent;
 import android.view.View;
 
+import com.xuexiang.xaop.annotation.Permission;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.base.PageContainerListFragment;
 import com.xuexiang.xpage.utils.TitleBar;
 import com.xuexiang.xutil.common.ClickUtils;
+
+import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
 
 /**
  * <pre>
@@ -41,7 +44,8 @@ public class MainFragment extends PageContainerListFragment {
     @Override
     protected Class[] getPagesClasses() {
         return new Class[]{
-                InternalDBFragment.class
+                InternalDBFragment.class,
+                ExternalDBFragment.class
         };
     }
 
@@ -55,6 +59,11 @@ public class MainFragment extends PageContainerListFragment {
         });
     }
 
+    @Override
+    @Permission(STORAGE)
+    protected void onItemClick(int position) {
+        super.onItemClick(position);
+    }
 
     /**
      * 菜单、返回键响应

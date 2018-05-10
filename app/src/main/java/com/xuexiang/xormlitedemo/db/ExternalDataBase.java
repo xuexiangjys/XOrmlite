@@ -17,10 +17,12 @@
 package com.xuexiang.xormlitedemo.db;
 
 import android.database.sqlite.SQLiteDatabase;
+import android.text.TextUtils;
 
 import com.j256.ormlite.support.ConnectionSource;
 import com.xuexiang.xormlite.db.IExternalDataBase;
 import com.xuexiang.xormlite.logs.DBLog;
+import com.xuexiang.xutil.file.FileUtils;
 
 import java.io.File;
 
@@ -50,29 +52,44 @@ public class ExternalDataBase extends InternalDataBase implements IExternalDataB
      */
     @Override
     public void createOrOpenDB(ConnectionSource connectionSource) {
-        File dbFile = new File(mDBPath, mDBName);
-        if (!dbFile.exists()) {
-            dbFile.mkdirs();
-        }
-        SQLiteDatabase db = null;
-        try {
-            db = SQLiteDatabase.openOrCreateDatabase(dbFile.getAbsoluteFile(), null);
-        } catch (Exception e) {
-            DBLog.e(e);
-        }
-        if (db != null) {
-            int oldVersionCode = db.getVersion();
-            if (oldVersionCode != mDatabaseVersion) { //版本不一致需要操作
-                if (oldVersionCode == 0) {
-                    onCreate(db, connectionSource);
-                } else {
-                    if (oldVersionCode < mDatabaseVersion) {
-                        onUpgrade(db, connectionSource, oldVersionCode, mDatabaseVersion);
+        String dbFilePath = getFilePath(mDBPath, mDBName);
+        if (FileUtils.createOrExistsFile(dbFilePath)) {
+            SQLiteDatabase db = null;
+            try {
+                db = SQLiteDatabase.openOrCreateDatabase(dbFilePath, null);
+            } catch (Exception e) {
+                DBLog.e(e);
+            }
+            if (db != null) {
+                int oldVersionCode = db.getVersion();
+                if (oldVersionCode != mDatabaseVersion) { //版本不一致需要操作
+                    if (oldVersionCode == 0) {
+                        onCreate(db, connectionSource);
+                    } else {
+                        if (oldVersionCode < mDatabaseVersion) {
+                            onUpgrade(db, connectionSource, oldVersionCode, mDatabaseVersion);
+                        }
                     }
                 }
+                db.setVersion(mDatabaseVersion);
             }
-            db.setVersion(mDatabaseVersion);
         }
+    }
+
+    /**
+     * 获取文件的路径
+     *
+     * @param dirPath  目录
+     * @param fileName 文件名
+     * @return 拼接的文件的路径
+     */
+    private String getFilePath(String dirPath, String fileName) {
+        if (TextUtils.isEmpty(dirPath)) return "";
+
+        if (!dirPath.trim().endsWith(File.separator)) {
+            dirPath = dirPath.trim() + File.separator;
+        }
+        return dirPath + fileName;
     }
 
 }

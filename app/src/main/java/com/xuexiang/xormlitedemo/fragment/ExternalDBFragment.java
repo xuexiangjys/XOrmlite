@@ -16,16 +16,39 @@
 
 package com.xuexiang.xormlitedemo.fragment;
 
+import android.view.View;
+import android.widget.ListView;
+
+import com.xuexiang.xormlite.ExternalDataBaseRepository;
+import com.xuexiang.xormlite.db.DBService;
+import com.xuexiang.xormlitedemo.R;
+import com.xuexiang.xormlitedemo.adapter.StudentAdapter;
+import com.xuexiang.xormlitedemo.db.entity.Student;
+import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.base.BaseFragment;
+
+import java.sql.SQLException;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * <pre>
- *     desc   :
+ *     desc   : 外部存储数据库
  *     author : xuexiang
  *     time   : 2018/5/10 上午12:49
  * </pre>
  */
+@Page(name = "外部存储数据库")
 public class ExternalDBFragment extends BaseFragment {
+
+    private DBService<Student> mDBService;
+
+    @BindView(R.id.lv_data)
+    ListView mLvData;
+
+    private StudentAdapter mStudentAdapter;
+
     /**
      * 布局的资源id
      *
@@ -33,7 +56,7 @@ public class ExternalDBFragment extends BaseFragment {
      */
     @Override
     protected int getLayoutId() {
-        return 0;
+        return R.layout.fragment_db;
     }
 
     /**
@@ -41,7 +64,10 @@ public class ExternalDBFragment extends BaseFragment {
      */
     @Override
     protected void initViews() {
+        mDBService = ExternalDataBaseRepository.getInstance().getDataBase(Student.class);
 
+        mStudentAdapter = new StudentAdapter(getContext(), null, mDBService);
+        mLvData.setAdapter(mStudentAdapter);
     }
 
     /**
@@ -50,5 +76,45 @@ public class ExternalDBFragment extends BaseFragment {
     @Override
     protected void initListeners() {
 
+    }
+
+    @OnClick({R.id.btn_add, R.id.btn_query, R.id.btn_update, R.id.btn_delete})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn_add:
+                Student student = new Student();
+                student.setUserName("xuexiang");
+                student.setSex("男");
+                student.setAge((int) (Math.random() * 100));
+
+                try {
+                    mDBService.insert(student);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case R.id.btn_query:
+                try {
+                    mStudentAdapter.updateList(mDBService.queryAll());
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case R.id.btn_update:
+                try {
+                    mDBService.updateDataByColumn("username", "xxxx", "username", "xuexiang");
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+                break;
+            case R.id.btn_delete:
+                try {
+                    mDBService.deleteAll();
+                    mStudentAdapter.updateList(mDBService.queryAll());
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+        }
     }
 }

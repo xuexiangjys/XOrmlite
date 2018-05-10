@@ -25,10 +25,11 @@ import com.j256.ormlite.support.ConnectionSource;
  *     time   : 2018/5/7 下午10:29
  * </pre>
  */
-public interface IExternalDataBase extends IDatabase{
+public interface IExternalDataBase extends IDatabase {
 
     /**
      * 创建或者打开数据库
+     *
      * @param connectionSource
      */
     void createOrOpenDB(ConnectionSource connectionSource);

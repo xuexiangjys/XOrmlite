@@ -30,7 +30,7 @@ import com.xuexiang.xormlitedemo.db.ExternalDataBase;
  *     time   : 2018/5/9 下午11:44
  * </pre>
  */
-@DataBase(name = "external", type = DataBaseType.EXTERNAL, path = "/storage/emulated/0/xormlite/databases/")
+@DataBase(name = "external", type = DataBaseType.EXTERNAL, path = "/storage/emulated/0/xormlite/databases")
 public class ExternalApp extends Application {
 
     @Override

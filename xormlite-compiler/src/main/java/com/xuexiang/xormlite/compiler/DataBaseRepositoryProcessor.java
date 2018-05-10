@@ -23,7 +23,6 @@ import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.ParameterizedTypeName;
-import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
 import com.squareup.javapoet.TypeVariableName;
 import com.xuexiang.xormlite.annotation.DataBase;
@@ -34,6 +33,7 @@ import com.xuexiang.xormlite.util.Logger;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -59,6 +59,7 @@ import javax.lang.model.util.Types;
 
 /**
  * 数据库仓库自动生成器
+ *
  * @author xuexiang
  */
 @AutoService(Processor.class)
@@ -69,7 +70,7 @@ public class DataBaseRepositoryProcessor extends AbstractProcessor {
     private static final ClassName IDatabaseClassName = ClassName.get("com.xuexiang.xormlite.db", "IDatabase");
     private static final ClassName IExternalDataBaseClassName = ClassName.get("com.xuexiang.xormlite.db", "IExternalDataBase");
     private static final ClassName DBLogClassName = ClassName.get("com.xuexiang.xormlite.logs", "DBLog");
-    private static final TypeVariableName T =  TypeVariableName.get("T");
+    private static final TypeVariableName T = TypeVariableName.get("T");
 
     private Filer mFiler; //文件相关的辅助类
     private Types mTypes;
@@ -87,6 +88,7 @@ public class DataBaseRepositoryProcessor extends AbstractProcessor {
     private static final String DATABASE_REPOSITORY_CLASS_NAME = "DataBaseRepository";
 
     private TypeMirror mApplication = null;
+
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
         super.init(processingEnv);
@@ -119,6 +121,7 @@ public class DataBaseRepositoryProcessor extends AbstractProcessor {
 
     /**
      * 解析数据库标注
+     *
      * @param dataBaseElements
      */
     private void parseDataBases(Set<? extends Element> dataBaseElements) throws IOException {
@@ -247,7 +250,8 @@ public class DataBaseRepositoryProcessor extends AbstractProcessor {
                             .addTypeVariable(T)
                             .returns(ParameterizedTypeName.get(DBServiceClassName, T))
                             .addParameter(ParameterizedTypeName.get(ClassName.get(Class.class), T), "clazz", Modifier.FINAL)
-                            .addCode("$T dbService = null;\n" +
+                            .addCode(
+                                    "$T dbService = null;\n" +
                                     "if (mDBPool.containsKey(clazz.getCanonicalName())) {\n" +
                                     "   dbService = mDBPool.get(clazz.getCanonicalName());\n" +
                                     "} else {\n" +
@@ -283,7 +287,7 @@ public class DataBaseRepositoryProcessor extends AbstractProcessor {
                                 .addModifiers(Modifier.PUBLIC)
                                 .addModifiers(Modifier.STATIC)
                                 .addModifiers(Modifier.FINAL)
-                                .initializer("$S", !StringUtils.isEmpty(dataBase.path()) ? dataBase.path() : "/storage/emulated/0/Android/databases/xormlite/")
+                                .initializer("$S", !StringUtils.isEmpty(dataBase.path()) ? getDirPath(dataBase.path()) : "/storage/emulated/0/Android/xormlite/databases/")
                                 .build();
                         dataBaseRepositoryBuilder.addField(dbPathField);
                     }
@@ -299,6 +303,21 @@ public class DataBaseRepositoryProcessor extends AbstractProcessor {
         } else {
             return "       dbService = new $T(mContext, clazz, DATABASE_PATH, DATABASE_NAME, DATABASE_VERSION, mIDatabase);\n";
         }
+    }
+
+    /**
+     * 获取文件目录的路径，自动补齐"/"
+     *
+     * @param dirPath 目录路径
+     * @return 自动补齐"/"的目录路径
+     */
+    private String getDirPath(String dirPath) {
+        if (StringUtils.isEmpty(dirPath)) return "";
+
+        if (!dirPath.trim().endsWith(File.separator)) {
+            dirPath = dirPath.trim() + File.separator;
+        }
+        return dirPath;
     }
 
 

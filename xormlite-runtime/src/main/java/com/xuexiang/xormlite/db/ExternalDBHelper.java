@@ -18,6 +18,7 @@ package com.xuexiang.xormlite.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.text.TextUtils;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
@@ -80,24 +81,32 @@ public class ExternalDBHelper extends OrmLiteSqliteOpenHelper {
 
     @Override
     public SQLiteDatabase getWritableDatabase() {
-        File dbFile = new File(mDBDirPath, mDBName);
-        if (!dbFile.exists()) {
-            dbFile.mkdirs();
-        }
-        return SQLiteDatabase.openDatabase(dbFile.getAbsolutePath(), null,
+        return SQLiteDatabase.openDatabase(getFilePath(mDBDirPath, mDBName), null,
                 SQLiteDatabase.OPEN_READWRITE);
 
     }
 
     @Override
     public SQLiteDatabase getReadableDatabase() {
-        File dbFile = new File(mDBDirPath, mDBName);
-        if (!dbFile.exists()) {
-            dbFile.mkdirs();
-        }
-        return SQLiteDatabase.openDatabase(dbFile.getAbsolutePath(), null,
+        return SQLiteDatabase.openDatabase(getFilePath(mDBDirPath, mDBName), null,
                 SQLiteDatabase.OPEN_READWRITE);
 
+    }
+
+    /**
+     * 获取文件的路径
+     *
+     * @param dirPath  目录
+     * @param fileName 文件名
+     * @return 拼接的文件的路径
+     */
+    private String getFilePath(String dirPath, String fileName) {
+        if (TextUtils.isEmpty(dirPath)) return "";
+
+        if (!dirPath.trim().endsWith(File.separator)) {
+            dirPath = dirPath.trim() + File.separator;
+        }
+        return dirPath + fileName;
     }
 
 }
