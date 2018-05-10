@@ -29,9 +29,9 @@
 
 ### Demo下载
 
-[![downloads]([download-svg])]([download-url])
+[![downloads][download-svg]][download-url]
 
-![]([download-img])
+![](download-img)
 
 
 
