@@ -198,8 +198,10 @@ try {
 } catch (SQLException e1) {
     e1.printStackTrace();
 }
+```
 
-//执行事务插入
+3.执行事务插入
+```
 try {
     mDBService.doInTransaction(new Callable<Boolean>() {
         @Override
@@ -216,7 +218,7 @@ try {
 }
 ```
 
-3.执行事务删除
+4.执行事务删除
 ```
 try {
     mDBService.doInTransaction(new Callable<Boolean>() {
