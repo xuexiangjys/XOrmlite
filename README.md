@@ -243,6 +243,10 @@ try {
 
 ![](https://github.com/xuexiangjys/XPage/blob/master/img/qq_group.jpg)
 
+## 向我提问
+打开微信扫一扫，向我提问：
+![这里写图片描述](https://img-blog.csdn.net/20180511001512918?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3h1ZXhpYW5nanlz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+
 [xormlite-svg]: https://img.shields.io/badge/XOrmlite-v1.0.0-brightgreen.svg
 [xormlite]: https://github.com/xuexiangjys/XOrmlite
 [apisvg]: https://img.shields.io/badge/API-14+-brightgreen.svg
