@@ -98,7 +98,7 @@ public class DBService<T> {
      * 插入单条数据
      *
      * @param object
-     * @return
+     * @return 1
      * @throws SQLException
      */
     public int insert(T object) throws SQLException {
@@ -117,7 +117,7 @@ public class DBService<T> {
     }
 
     /**
-     * 批量添加
+     * 批量添加，返回插入数量的集合
      *
      * @param collection
      * @return
@@ -377,7 +377,7 @@ public class DBService<T> {
      *
      * @param datas
      */
-    public int deleteDataList(Collection<T> datas) throws SQLException {
+    public int deleteDatas(Collection<T> datas) throws SQLException {
         return mDao.delete(datas);
     }
 

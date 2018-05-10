@@ -54,11 +54,14 @@ public class App extends Application {
         init();
 
         InternalDataBaseRepository.getInstance()
-                .setIDatabase(new InternalDataBase())
+                .setIDatabase(new InternalDataBase())  //设置内部存储的数据库实现接口
                 .init(this);
 
         ExternalDataBaseRepository.getInstance()
-                .setIDatabase(new ExternalDataBase(ExternalDataBaseRepository.DATABASE_PATH, ExternalDataBaseRepository.DATABASE_NAME, ExternalDataBaseRepository.DATABASE_VERSION))
+                .setIDatabase(new ExternalDataBase(  //设置外部存储的数据库实现接口
+                        ExternalDataBaseRepository.DATABASE_PATH,
+                        ExternalDataBaseRepository.DATABASE_NAME,
+                        ExternalDataBaseRepository.DATABASE_VERSION))
                 .init(this);
 
         DBLog.debug(true);
