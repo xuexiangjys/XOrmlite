@@ -177,8 +177,8 @@ DBService<Student> mDBService = InternalDataBaseRepository.getInstance().getData
 
 ### 2.5、数据库操作示例
 
+1.插入单条数据
 ```
-//插入单条数据
 Student student = new Student();
 student.setUserName("xuexiang");
 student.setSex("男");
@@ -189,8 +189,10 @@ try {
 } catch (SQLException e) {
     e.printStackTrace();
 }
+```
 
-//更新数据库某一字段
+2.更新数据库某一字段
+```
 try {
     mDBService.updateDataByColumn("username", "xxxx", "username", "xuexiang");
 } catch (SQLException e1) {
@@ -212,8 +214,10 @@ try {
     e.printStackTrace();
     ToastUtils.toast("事务执行失败！");
 }
+```
 
-//执行事务删除
+3.执行事务删除
+```
 try {
     mDBService.doInTransaction(new Callable<Boolean>() {
         @Override
