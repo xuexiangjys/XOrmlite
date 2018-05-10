@@ -373,6 +373,7 @@ public class DBService<T> {
 
     /**
      * 批量删除（注意：对象必须带唯一标识ID,否则方法不起作用)
+     * <p>大数据量的删除不起左右，会报too many SQL variables错误</p>
      *
      * @param datas
      */
@@ -384,9 +385,7 @@ public class DBService<T> {
      * 删除所有数据
      */
     public int deleteAll() throws SQLException {
-        List<T> datas = mDao.queryForAll();
-        return mDao.delete(datas);
-
+        return executeSql("DELETE from " + mDao.getTableName());
     }
 
     /**

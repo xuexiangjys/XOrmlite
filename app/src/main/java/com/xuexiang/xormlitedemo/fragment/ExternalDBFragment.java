@@ -26,8 +26,12 @@ import com.xuexiang.xormlitedemo.adapter.StudentAdapter;
 import com.xuexiang.xormlitedemo.db.entity.Student;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.base.BaseFragment;
+import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -48,6 +52,8 @@ public class ExternalDBFragment extends BaseFragment {
     ListView mLvData;
 
     private StudentAdapter mStudentAdapter;
+
+    private List<Student> mTempList;
 
     /**
      * 布局的资源id
@@ -75,10 +81,18 @@ public class ExternalDBFragment extends BaseFragment {
      */
     @Override
     protected void initListeners() {
-
+        mTempList = new ArrayList<>();
+        for (int i = 0; i < 1000; i++) {
+            Student student = new Student();
+            student.setUserName("xuexiang");
+            student.setSex("男");
+            student.setAge((int) (Math.random() * 100));
+            student.setId(i);
+            mTempList.add(student);
+        }
     }
 
-    @OnClick({R.id.btn_add, R.id.btn_query, R.id.btn_update, R.id.btn_delete})
+    @OnClick({R.id.btn_add, R.id.btn_query, R.id.btn_update, R.id.btn_delete, R.id.btn_add_by_transaction, R.id.btn_delete_by_transaction})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_add:
@@ -114,6 +128,41 @@ public class ExternalDBFragment extends BaseFragment {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
+                break;
+            case R.id.btn_add_by_transaction:
+                try {
+                    mDBService.doInTransaction(new Callable<Boolean>() {
+                        @Override
+                        public Boolean call() throws Exception {
+                            for (int i = 0; i < mTempList.size(); i++) {
+                                mDBService.insert(mTempList.get(i));
+                            }
+                            return true;
+                        }
+                    });
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    ToastUtils.toast("事务执行失败！");
+                }
+                break;
+            case R.id.btn_delete_by_transaction:
+                try {
+                    mDBService.doInTransaction(new Callable<Boolean>() {
+                        @Override
+                        public Boolean call() throws Exception {
+                            for (int i = 0; i < mTempList.size(); i++) {
+                                mDBService.deleteData(mTempList.get(i));
+                            }
+                            return true;
+                        }
+                    });
+                    mStudentAdapter.updateList(mDBService.queryAll());
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    ToastUtils.toast("事务执行失败！");
+                }
+                break;
+            default:
                 break;
         }
     }
