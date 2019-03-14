@@ -13,6 +13,8 @@
 
 * 支持自动生成数据库管理仓库`DataBaseRepository`。
 
+* 支持自动搜索所有的数据库表类，并自动创建数据库表。
+
 * 支持内部存储和外部存储两种数据库。
 
 * 支持自定义数据库存储位置。
@@ -55,8 +57,8 @@ allprojects {
 ```
 dependencies {
   ...
-  implementation 'com.github.xuexiangjys.XOrmlite:xormlite-runtime:1.0.0'
-  annotationProcessor 'com.github.xuexiangjys.XOrmlite:xormlite-compiler:1.0.0'
+  implementation 'com.github.xuexiangjys.XOrmlite:xormlite-runtime:1.0.1'
+  annotationProcessor 'com.github.xuexiangjys.XOrmlite:xormlite-compiler:1.0.1'
 }
 ```
 
@@ -114,6 +116,8 @@ public class App extends Application {
     }
 }
 ```
+
+[点击查看InternalDataBase的实现](https://github.com/xuexiangjys/XOrmlite/blob/master/app/src/main/java/com/xuexiang/xormlitedemo/db/InternalDataBase.java)
 
 ### 2.3、数据库服务获取
 
@@ -263,7 +267,7 @@ try {
 
 ![这里写图片描述](https://img-blog.csdn.net/20180511001512918?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3h1ZXhpYW5nanlz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
-[xormlite-svg]: https://img.shields.io/badge/XOrmlite-v1.0.0-brightgreen.svg
+[xormlite-svg]: https://img.shields.io/badge/XOrmlite-v1.0.1-brightgreen.svg
 [xormlite]: https://github.com/xuexiangjys/XOrmlite
 [apisvg]: https://img.shields.io/badge/API-14+-brightgreen.svg
 [api]: https://android-arsenal.com/api?level=14

@@ -9,6 +9,8 @@
 
 * 支持自动生成数据库管理仓库`DataBaseRepository`。
 
+* 支持自动搜索所有的数据库表类，并自动创建数据库表。
+
 * 支持内部存储和外部存储两种数据库。
 
 * 支持自定义数据库存储位置。
@@ -41,8 +43,8 @@ allprojects {
 ```
 dependencies {
   ...
-  implementation 'com.github.xuexiangjys.XOrmlite:xormlite-runtime:1.0.0'
-  annotationProcessor 'com.github.xuexiangjys.XOrmlite:xormlite-compiler:1.0.0'
+  implementation 'com.github.xuexiangjys.XOrmlite:xormlite-runtime:1.0.1'
+  annotationProcessor 'com.github.xuexiangjys.XOrmlite:xormlite-compiler:1.0.1'
 }
 ```
 
@@ -50,7 +52,7 @@ dependencies {
 
 [![](https://img.shields.io/badge/点击一键加入QQ交流群-602082750-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=9922861ef85c19f1575aecea0e8680f60d9386080a97ed310c971ae074998887)
 
-[xormlite-svg]: https://img.shields.io/badge/XOrmlite-v1.0.0-brightgreen.svg
+[xormlite-svg]: https://img.shields.io/badge/XOrmlite-v1.0.1-brightgreen.svg
 [xormlite]: https://github.com/xuexiangjys/XOrmlite
 [apisvg]: https://img.shields.io/badge/API-14+-brightgreen.svg
 [api]: https://android-arsenal.com/api?level=14
