@@ -16,8 +16,6 @@
 
 package com.xuexiang.xormlite.util;
 
-import com.squareup.javapoet.ClassName;
-
 /**
  * 常量
  * @author xuexiang

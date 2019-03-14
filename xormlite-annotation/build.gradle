@@ -18,4 +18,8 @@ apply plugin: 'java'
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
+dependencies {
+    compile 'com.j256.ormlite:ormlite-core:5.1'
+}
+
 apply from: "https://raw.githubusercontent.com/xuexiangjys/XUtil/master/JitPackUpload.gradle"

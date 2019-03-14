@@ -19,10 +19,10 @@ package com.xuexiang.xormlitedemo.db;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.j256.ormlite.support.ConnectionSource;
-import com.j256.ormlite.table.TableUtils;
+import com.xuexiang.xormlite.AppDataBaseTable;
+import com.xuexiang.xormlite.db.DataBaseUtils;
 import com.xuexiang.xormlite.db.IDatabase;
 import com.xuexiang.xormlite.logs.DBLog;
-import com.xuexiang.xormlitedemo.db.entity.Student;
 
 import java.sql.SQLException;
 
@@ -43,7 +43,7 @@ public class InternalDataBase implements IDatabase {
     @Override
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
         try {
-            TableUtils.createTableIfNotExists(connectionSource, Student.class);// 创建检查信息表
+            DataBaseUtils.createTablesByClassNames(connectionSource, AppDataBaseTable.getTables());
         } catch (SQLException e) {
             DBLog.e(e);
         }

@@ -20,8 +20,6 @@ dependencies {
     compileOnly deps.support.app_compat
 
     api 'com.j256.ormlite:ormlite-android:5.1'
-    api 'com.j256.ormlite:ormlite-core:5.1'
-
     api project(':xormlite-annotation')
 }
 
