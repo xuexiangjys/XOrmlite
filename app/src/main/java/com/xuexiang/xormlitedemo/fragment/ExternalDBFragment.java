@@ -96,11 +96,12 @@ public class ExternalDBFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_add:
+                int age = (int) (Math.random() * 100);
                 Student student = new Student();
                 student.setUserName("xuexiang");
                 student.setSex("男");
-                student.setAge((int) (Math.random() * 100));
-
+                student.setAge(age);
+                student.setHappy(age % 2 == 0);
                 try {
                     mDBService.insert(student);
                 } catch (SQLException e) {

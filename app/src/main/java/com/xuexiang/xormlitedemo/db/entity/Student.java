@@ -30,6 +30,8 @@ public class Student {
     private int Age;
     @DatabaseField(columnName = "sex")
     private String Sex;
+    @DatabaseField
+    private boolean Happy;
 
     public long getId() {
         return Id;
@@ -67,8 +69,23 @@ public class Student {
         return this;
     }
 
-    public String toString() {
-        return "id:" + Id + ", username:" + UserName + ", age:" + Age + ", sex:" + Sex;
+    public boolean isHappy() {
+        return Happy;
     }
 
+    public Student setHappy(boolean happy) {
+        Happy = happy;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "Id=" + Id +
+                ", UserName='" + UserName + '\'' +
+                ", Age=" + Age +
+                ", Sex='" + Sex + '\'' +
+                ", Happy=" + Happy +
+                '}';
+    }
 }
