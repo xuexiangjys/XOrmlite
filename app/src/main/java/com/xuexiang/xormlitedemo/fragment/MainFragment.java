@@ -21,7 +21,7 @@ import android.view.View;
 
 import com.xuexiang.xaop.annotation.Permission;
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xpage.base.PageContainerListFragment;
+import com.xuexiang.xpage.base.XPageContainerListFragment;
 import com.xuexiang.xpage.utils.TitleBar;
 import com.xuexiang.xutil.common.ClickUtils;
 
@@ -35,7 +35,7 @@ import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
  * </pre>
  */
 @Page(name = "XOrmlite数据库")
-public class MainFragment extends PageContainerListFragment {
+public class MainFragment extends XPageContainerListFragment {
     /**
      * 获取页面的类集合[使用@Page注解进行注册的页面]
      *

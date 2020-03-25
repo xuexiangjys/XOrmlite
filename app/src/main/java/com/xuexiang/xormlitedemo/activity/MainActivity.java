@@ -18,11 +18,10 @@ package com.xuexiang.xormlitedemo.activity;
 
 import android.os.Bundle;
 
-import com.xuexiang.xormlitedemo.R;
 import com.xuexiang.xormlitedemo.fragment.MainFragment;
-import com.xuexiang.xpage.base.BaseActivity;
+import com.xuexiang.xpage.base.XPageActivity;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends XPageActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

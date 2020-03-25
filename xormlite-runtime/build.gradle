@@ -23,4 +23,4 @@ dependencies {
     api project(':xormlite-annotation')
 }
 
-apply from: "https://raw.githubusercontent.com/xuexiangjys/XUtil/master/JitPackUpload.gradle"
+apply from: "../JitPackUpload.gradle"

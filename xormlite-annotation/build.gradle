@@ -22,4 +22,4 @@ dependencies {
     compile 'com.j256.ormlite:ormlite-core:5.1'
 }
 
-apply from: "https://raw.githubusercontent.com/xuexiangjys/XUtil/master/JitPackUpload.gradle"
+apply from: "../JitPackUpload.gradle"

@@ -25,7 +25,7 @@ import com.xuexiang.xormlitedemo.R;
 import com.xuexiang.xormlitedemo.adapter.StudentAdapter;
 import com.xuexiang.xormlitedemo.db.entity.Student;
 import com.xuexiang.xpage.annotation.Page;
-import com.xuexiang.xpage.base.BaseFragment;
+import com.xuexiang.xpage.base.XPageFragment;
 import com.xuexiang.xutil.tip.ToastUtils;
 
 import java.sql.SQLException;
@@ -44,7 +44,7 @@ import butterknife.OnClick;
  * </pre>
  */
 @Page(name = "外部存储数据库")
-public class ExternalDBFragment extends BaseFragment {
+public class ExternalDBFragment extends XPageFragment {
 
     private DBService<Student> mDBService;
 

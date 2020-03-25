@@ -2,11 +2,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.xuexiang.xaop' //引用xaop插件
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
+
     defaultConfig {
         applicationId "com.xuexiang.xormlitedemo"
         minSdkVersion 19
-        targetSdkVersion 27
+        targetSdkVersion build_versions.target_sdk
         versionCode 1
         versionName "1.0"
 
@@ -50,19 +52,19 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation deps.support.app_compat
 //    implementation project(':xormlite-runtime')
 //    annotationProcessor project(':xormlite-compiler')
 
     implementation 'com.github.xuexiangjys.XOrmlite:xormlite-runtime:1.0.1'
     annotationProcessor 'com.github.xuexiangjys.XOrmlite:xormlite-compiler:1.0.1'
 
-    implementation 'com.github.xuexiangjys.XUtil:xutil-core:1.1.2'
-    implementation 'com.github.xuexiangjys.XAOP:xaop-runtime:1.0.0'  //添加依赖
+    implementation 'com.github.xuexiangjys.XUtil:xutil-core:1.1.7'
+    implementation 'com.github.xuexiangjys.XAOP:xaop-runtime:1.0.5'  //添加依赖
 
     //XPage
-    implementation 'com.github.xuexiangjys.XPage:xpage-lib:2.1.8'
-    annotationProcessor 'com.github.xuexiangjys.XPage:xpage-compiler:2.1.8'
+    implementation 'com.github.xuexiangjys.XPage:xpage-lib:2.3.0'
+    annotationProcessor 'com.github.xuexiangjys.XPage:xpage-compiler:2.3.0'
     //butterknife的sdk
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
