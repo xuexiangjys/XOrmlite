@@ -53,13 +53,13 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation deps.support.app_compat
-//    implementation project(':xormlite-runtime')
+    implementation project(':xormlite-runtime')
 //    annotationProcessor project(':xormlite-compiler')
 
-    implementation 'com.github.xuexiangjys.XOrmlite:xormlite-runtime:1.0.1'
+//    implementation 'com.github.xuexiangjys.XOrmlite:xormlite-runtime:1.0.1'
     annotationProcessor 'com.github.xuexiangjys.XOrmlite:xormlite-compiler:1.0.1'
 
-    implementation 'com.github.xuexiangjys.XUtil:xutil-core:1.1.7'
+    implementation 'com.github.xuexiangjys.XUtil:xutil-core:1.1.8'
     implementation 'com.github.xuexiangjys.XAOP:xaop-runtime:1.0.5'  //添加依赖
 
     //XPage
@@ -68,4 +68,9 @@ dependencies {
     //butterknife的sdk
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    implementation deps.support.recyclerview
+    //下拉刷新
+    implementation 'com.github.xuexiangjys.SmartRefreshLayout:refresh-header:1.1.5'
+    implementation 'com.github.xuexiangjys.SmartRefreshLayout:refresh-layout:1.1.5'
 }

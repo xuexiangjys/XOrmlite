@@ -196,6 +196,24 @@ public class DBService<T> {
     }
 
     /**
+     * 根据某个字段进行分页查询
+     *
+     * @param columnName 排序的列名
+     * @param ascending  true：升序，false：降序
+     * @param pageIndex   页面的索引
+     * @param pageSize   一页的数据大小
+     * @return
+     * @throws SQLException
+     */
+    public List<T> pageQuery(String columnName, boolean ascending, long pageIndex, long pageSize) throws SQLException {
+        QueryBuilder<T, Integer> query = mDao.queryBuilder();
+        query.limit(pageSize);
+        query.offset(pageIndex * pageSize);
+        query.orderBy(columnName, ascending);
+        return query.query();
+    }
+
+    /**
      * 根据id查询出一条数据
      *
      * @param id 查询的id
@@ -445,7 +463,7 @@ public class DBService<T> {
     /**
      * 序列化数据库对象的信息
      *
-     * @param data
+     * @param data 数据
      * @return
      */
     public String objectToString(T data) {
@@ -456,12 +474,16 @@ public class DBService<T> {
         return mDao;
     }
 
+    public OrmLiteSqliteOpenHelper getSqliteOpenHelper() {
+        return mSqliteOpenHelper;
+    }
+
     /************************************************* 事务操作 **********************************************/
 
     /**
      * 执行事务操作
      */
-    public <T> T doInTransaction(final Callable<T> callable) throws SQLException {
+    public <R> R doInTransaction(final Callable<R> callable) throws SQLException {
         return TransactionManager.callInTransaction(mSqliteOpenHelper.getConnectionSource(), callable);
     }
 
@@ -487,10 +509,7 @@ public class DBService<T> {
      * 提交事务
      */
     public void commit() throws SQLException {
-        if (mConnection != null) {
-            mConnection.commit(mSavePoint);
-            mDao.endThreadConnection(mConnection);
-        }
+        commit(mSavePoint);
     }
 
     /**
@@ -507,10 +526,7 @@ public class DBService<T> {
      * 事务回滚
      */
     public void rollBack() throws SQLException {
-        if (mConnection != null) {
-            mConnection.rollback(mSavePoint);
-            mDao.endThreadConnection(mConnection);
-        }
+        rollBack(mSavePoint);
     }
 
 }

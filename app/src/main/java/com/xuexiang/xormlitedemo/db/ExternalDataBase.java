@@ -52,7 +52,7 @@ public class ExternalDataBase extends InternalDataBase implements IExternalDataB
      */
     @Override
     public void createOrOpenDB(ConnectionSource connectionSource) {
-        String dbFilePath = getFilePath(mDBPath, mDBName);
+        String dbFilePath = FileUtils.getFilePath(mDBPath, mDBName);
         if (FileUtils.createOrExistsFile(dbFilePath)) {
             SQLiteDatabase db = null;
             try {
@@ -74,22 +74,6 @@ public class ExternalDataBase extends InternalDataBase implements IExternalDataB
                 db.setVersion(mDatabaseVersion);
             }
         }
-    }
-
-    /**
-     * 获取文件的路径
-     *
-     * @param dirPath  目录
-     * @param fileName 文件名
-     * @return 拼接的文件的路径
-     */
-    private String getFilePath(String dirPath, String fileName) {
-        if (TextUtils.isEmpty(dirPath)) return "";
-
-        if (!dirPath.trim().endsWith(File.separator)) {
-            dirPath = dirPath.trim() + File.separator;
-        }
-        return dirPath + fileName;
     }
 
 }

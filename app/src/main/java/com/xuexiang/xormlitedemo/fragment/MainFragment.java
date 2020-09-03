@@ -45,7 +45,8 @@ public class MainFragment extends XPageContainerListFragment {
     protected Class[] getPagesClasses() {
         return new Class[]{
                 InternalDBFragment.class,
-                ExternalDBFragment.class
+                ExternalDBFragment.class,
+                PageQueryFragment.class
         };
     }
 
