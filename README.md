@@ -1,11 +1,14 @@
 # XOrmlite
-[![xormlite][xormlite-svg]][xormlite]  [![api][apisvg]][api]
+[![](https://jitpack.io/v/xuexiangjys/XOrmlite.svg)](https://jitpack.io/#xuexiangjys/XOrmlite)
+[![api](https://img.shields.io/badge/API-14+-brightgreen.svg)](https://android-arsenal.com/api?level=14)
+[![Issue](https://img.shields.io/github/issues/xuexiangjys/XOrmlite.svg)](https://github.com/xuexiangjys/XOrmlite/issues)
+[![Star](https://img.shields.io/github/stars/xuexiangjys/XOrmlite.svg)](https://github.com/xuexiangjys/XOrmlite)
 
 一个方便实用的OrmLite数据库框架，支持一键集成。
 
 ## 关于我
 
-[![github](https://img.shields.io/badge/GitHub-xuexiangjys-blue.svg)](https://github.com/xuexiangjys)   [![csdn](https://img.shields.io/badge/CSDN-xuexiangjys-green.svg)](http://blog.csdn.net/xuexiangjys)
+[![github](https://img.shields.io/badge/GitHub-xuexiangjys-blue.svg)](https://github.com/xuexiangjys)   [![csdn](https://img.shields.io/badge/CSDN-xuexiangjys-green.svg)](http://blog.csdn.net/xuexiangjys)   [![简书](https://img.shields.io/badge/简书-xuexiangjys-red.svg)](https://www.jianshu.com/u/6bf605575337)   [![掘金](https://img.shields.io/badge/掘金-xuexiangjys-brightgreen.svg)](https://juejin.im/user/598feef55188257d592e56ed)   [![知乎](https://img.shields.io/badge/知乎-xuexiangjys-violet.svg)](https://www.zhihu.com/people/xuexiangjys)
 
 ## 特征
 
@@ -57,8 +60,8 @@ allprojects {
 ```
 dependencies {
   ...
-  implementation 'com.github.xuexiangjys.XOrmlite:xormlite-runtime:1.0.1'
-  annotationProcessor 'com.github.xuexiangjys.XOrmlite:xormlite-compiler:1.0.1'
+  implementation 'com.github.xuexiangjys.XOrmlite:xormlite-runtime:1.0.2'
+  annotationProcessor 'com.github.xuexiangjys.XOrmlite:xormlite-compiler:1.0.2'
 }
 ```
 
@@ -150,6 +153,7 @@ DBService<Student> mDBService = InternalDataBaseRepository.getInstance().getData
 * queryForColumnFirst： 根据条件查询，返回第一个符合条件的对象。
 * indistinctQueryForColumn： 根据条件模糊查询，返回一个对象集合。
 * queryDataBySql： 根据sql语句查询，返回对象的集合。
+* pageQuery: 根据某个字段进行分页查询
 
 #### 更新
 
@@ -266,11 +270,6 @@ try {
 打开微信扫一扫，向我提问：
 
 ![这里写图片描述](https://img-blog.csdn.net/20180511001512918?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3h1ZXhpYW5nanlz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
-
-[xormlite-svg]: https://img.shields.io/badge/XOrmlite-v1.0.1-brightgreen.svg
-[xormlite]: https://github.com/xuexiangjys/XOrmlite
-[apisvg]: https://img.shields.io/badge/API-14+-brightgreen.svg
-[api]: https://android-arsenal.com/api?level=14
 
 [demo-gif]: https://github.com/xuexiangjys/XOrmlite/blob/master/img/xormlite.gif
 [download-svg]: https://img.shields.io/badge/downloads-1.6M-blue.svg

@@ -1,5 +1,8 @@
 # XOrmlite
-[![xormlite][xormlite-svg]][xormlite]  [![api][apisvg]][api]
+[![](https://jitpack.io/v/xuexiangjys/XOrmlite.svg)](https://jitpack.io/#xuexiangjys/XOrmlite)
+[![api](https://img.shields.io/badge/API-14+-brightgreen.svg)](https://android-arsenal.com/api?level=14)
+[![Issue](https://img.shields.io/github/issues/xuexiangjys/XOrmlite.svg)](https://github.com/xuexiangjys/XOrmlite/issues)
+[![Star](https://img.shields.io/github/stars/xuexiangjys/XOrmlite.svg)](https://github.com/xuexiangjys/XOrmlite)
 
 一个方便实用的OrmLite数据库框架，支持一键集成。
 
@@ -43,19 +46,14 @@ allprojects {
 ```
 dependencies {
   ...
-  implementation 'com.github.xuexiangjys.XOrmlite:xormlite-runtime:1.0.1'
-  annotationProcessor 'com.github.xuexiangjys.XOrmlite:xormlite-compiler:1.0.1'
+  implementation 'com.github.xuexiangjys.XOrmlite:xormlite-runtime:1.0.2'
+  annotationProcessor 'com.github.xuexiangjys.XOrmlite:xormlite-compiler:1.0.2'
 }
 ```
 
 ## 联系方式
 
 [![](https://img.shields.io/badge/点击一键加入QQ交流群-602082750-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=9922861ef85c19f1575aecea0e8680f60d9386080a97ed310c971ae074998887)
-
-[xormlite-svg]: https://img.shields.io/badge/XOrmlite-v1.0.1-brightgreen.svg
-[xormlite]: https://github.com/xuexiangjys/XOrmlite
-[apisvg]: https://img.shields.io/badge/API-14+-brightgreen.svg
-[api]: https://android-arsenal.com/api?level=14
 
 [demo-gif]: https://github.com/xuexiangjys/XOrmlite/blob/master/img/xormlite.gif
 [download-svg]: https://img.shields.io/badge/downloads-1.6M-blue.svg

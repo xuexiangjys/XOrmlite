@@ -4,7 +4,7 @@
 **/
 ext.deps = [:]
 def versions = [:]
-versions.android_gradle_plugin = '3.4.1'
+versions.android_gradle_plugin = '3.2.1'
 versions.android_maven_gradle_plugin = "2.0"
 versions.gradle_bintray_plugin = "1.8.0"
 versions.arch_core = "1.1.0"
@@ -165,16 +165,15 @@ app_release.keyPassword = "xuexiang"
 ext.app_release = app_release
 
 //默认添加代码仓库路径
-def addRepos(RepositoryHandler handler) {
+static def addRepos(RepositoryHandler handler) {
+    handler.mavenLocal()
     handler.google()
-    handler.jcenter()
-    handler.mavenCentral()
-    //Add the JitPack repository
+    handler.jcenter { url 'https://maven.aliyun.com/repository/jcenter' }
+    handler.maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
     handler.maven { url "https://jitpack.io" }
-    //Add the aliyun repository
-    handler.maven{ url 'http://maven.aliyun.com/nexus/content/groups/public/'}
-    //Add the Local repository
-    handler.maven{ url 'LocalRepository'}
+    handler.mavenCentral()
+    handler.maven { url "https://dl.bintray.com/umsdk/release" }
+    handler.maven { url 'LocalRepository' }
 }
 
 ext.addRepos = this.&addRepos

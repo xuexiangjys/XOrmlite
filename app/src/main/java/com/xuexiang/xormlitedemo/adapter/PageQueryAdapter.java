@@ -27,6 +27,12 @@ import com.xuexiang.xormlitedemo.db.entity.Student;
 
 import java.sql.SQLException;
 
+/**
+ * 分页查询
+ *
+ * @author xuexiang
+ * @since 2020/9/3 6:35 PM
+ */
 public class PageQueryAdapter extends SmartRecyclerAdapter<Student> {
 
     private DBService<Student> mDBService;
