@@ -198,14 +198,14 @@ public class DBService<T> {
     /**
      * 根据某个字段进行分页查询
      *
+     * @param pageIndex  页面的索引
+     * @param pageSize   一页的数据大小
      * @param columnName 排序的列名
      * @param ascending  true：升序，false：降序
-     * @param pageIndex   页面的索引
-     * @param pageSize   一页的数据大小
      * @return
      * @throws SQLException
      */
-    public List<T> pageQuery(String columnName, boolean ascending, long pageIndex, long pageSize) throws SQLException {
+    public List<T> queryPage(long pageIndex, long pageSize, String columnName, boolean ascending) throws SQLException {
         QueryBuilder<T, Integer> query = mDao.queryBuilder();
         query.limit(pageSize);
         query.offset(pageIndex * pageSize);

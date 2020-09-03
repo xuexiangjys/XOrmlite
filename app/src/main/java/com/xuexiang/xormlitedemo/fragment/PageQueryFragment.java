@@ -102,7 +102,7 @@ public class PageQueryFragment extends XPageFragment {
 
     private List<Student> pageQuery(int pageIndex) {
         try {
-            return mDBService.pageQuery("Id", true, pageIndex, 50);
+            return mDBService.queryPage(pageIndex, 50, "Id", true);
         } catch (SQLException e) {
             e.printStackTrace();
         }

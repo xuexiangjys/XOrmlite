@@ -153,7 +153,7 @@ DBService<Student> mDBService = InternalDataBaseRepository.getInstance().getData
 * queryForColumnFirst： 根据条件查询，返回第一个符合条件的对象。
 * indistinctQueryForColumn： 根据条件模糊查询，返回一个对象集合。
 * queryDataBySql： 根据sql语句查询，返回对象的集合。
-* pageQuery: 根据某个字段进行分页查询
+* queryPage: 根据某个字段排序进行分页查询
 
 #### 更新
 
