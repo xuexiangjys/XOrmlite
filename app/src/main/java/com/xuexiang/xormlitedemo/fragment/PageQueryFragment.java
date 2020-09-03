@@ -17,13 +17,9 @@
 
 package com.xuexiang.xormlitedemo.fragment;
 
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -41,17 +37,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
-/**
- * [一句话功能简述]<BR>
- * [功能详细描述]<BR>
- *
- * @author xWx916614
- * @version [V9.1.0.1, 2020/9/3]
- * @since V9.1.0.1
- */
 @Page(name = "Sqlite分页查询")
 public class PageQueryFragment extends XPageFragment {
     @BindView(R.id.recyclerView)

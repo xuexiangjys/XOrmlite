@@ -27,14 +27,6 @@ import com.xuexiang.xormlitedemo.db.entity.Student;
 
 import java.sql.SQLException;
 
-/**
- * [一句话功能简述]<BR>
- * [功能详细描述]<BR>
- *
- * @author xWx916614
- * @version [V9.1.0.1, 2020/9/3]
- * @since V9.1.0.1
- */
 public class PageQueryAdapter extends SmartRecyclerAdapter<Student> {
 
     private DBService<Student> mDBService;
