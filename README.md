@@ -89,7 +89,7 @@ public class ExternalApp extends Application {
 
 2.使用`@DataBase`注册完后，请编译一下项目：build -> Rebuild Project，之后会自动生成数据库管理仓库: 数据库名 + DataBaseRepository 的Java文件。文件的生成路径如下：
 
-![](https://github.com/xuexiangjys/XOrmlite/blob/master/img/databaserepository.png)
+![xormlite_databaserepository.png](https://img.rruu.net/image/5f7dd078dff65)
 
 例如上面我们注册的数据库名为：external，自动生成的数据库管理仓库为 ExternalDataBaseRepository。
 
@@ -259,19 +259,25 @@ try {
 -keepclassmembers interface com.j256.** { *; }
 ```
 
+## 如果觉得项目还不错，可以考虑打赏一波
+
+> 你的打赏是我维护的动力，我将会列出所有打赏人员的清单在下方作为凭证，打赏前请留下打赏项目的备注！
+
+![alipay.jpeg](https://img.rruu.net/image/5f47eeb8bcdf5) &emsp; ![weixinpay.jpeg](https://img.rruu.net/image/5f47eeb1c8a08)
+
 ## 联系方式
 
 [![](https://img.shields.io/badge/点击一键加入QQ交流群-602082750-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=9922861ef85c19f1575aecea0e8680f60d9386080a97ed310c971ae074998887)
 
-![](https://github.com/xuexiangjys/XPage/blob/master/img/qq_group.jpg)
+![qq_group.jpg](https://img.rruu.net/image/5f47eea68ed66)
 
-## 向我提问
+## 微信公众号
 
-打开微信扫一扫，向我提问：
+打开微信扫一扫：
 
-![这里写图片描述](https://img-blog.csdn.net/20180511001512918?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3h1ZXhpYW5nanlz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+![winxin.jpg](https://img.rruu.net/image/5f47ee9f6b02d)
 
-[demo-gif]: https://github.com/xuexiangjys/XOrmlite/blob/master/img/xormlite.gif
+[demo-gif]: https://img.rruu.net/image/5f7dd07e9ba9b
 [download-svg]: https://img.shields.io/badge/downloads-1.6M-blue.svg
 [download-url]: https://github.com/xuexiangjys/XOrmlite/blob/master/apk/demo.apk?raw=true
-[download-img]: https://github.com/xuexiangjys/XOrmlite/blob/master/img/download.png
+[download-img]: https://img.rruu.net/image/5f7dd078f2e76
