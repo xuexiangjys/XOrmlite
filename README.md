@@ -263,7 +263,13 @@ try {
 
 > 你的打赏是我维护的动力，我将会列出所有打赏人员的清单在下方作为凭证，打赏前请留下打赏项目的备注！
 
-![alipay.jpeg](https://img.rruu.net/image/5f47eeb8bcdf5) &emsp; ![weixinpay.jpeg](https://img.rruu.net/image/5f47eeb1c8a08)
+![pay.png](https://img.rruu.net/image/5f871d00045da)
+
+## 微信公众号
+
+> 更多资讯内容，欢迎扫描关注我的个人微信公众号:【我的Android开源之旅】
+
+![gzh_weixin.jpg](https://img.rruu.net/image/5f871cfff3194)
 
 ## 联系方式
 
@@ -271,11 +277,6 @@ try {
 
 ![qq_group.jpg](https://img.rruu.net/image/5f47eea68ed66)
 
-## 微信公众号
-
-打开微信扫一扫：
-
-![winxin.jpg](https://img.rruu.net/image/5f47ee9f6b02d)
 
 [demo-gif]: https://img.rruu.net/image/5f7dd07e9ba9b
 [download-svg]: https://img.shields.io/badge/downloads-1.6M-blue.svg
