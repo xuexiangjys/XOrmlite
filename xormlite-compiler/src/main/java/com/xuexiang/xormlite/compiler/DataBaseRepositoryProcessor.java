@@ -312,7 +312,9 @@ public class DataBaseRepositoryProcessor extends AbstractProcessor {
      * @return 自动补齐"/"的目录路径
      */
     private String getDirPath(String dirPath) {
-        if (StringUtils.isEmpty(dirPath)) return "";
+        if (StringUtils.isEmpty(dirPath)) {
+            return "";
+        }
 
         if (!dirPath.trim().endsWith(File.separator)) {
             dirPath = dirPath.trim() + File.separator;
@@ -344,7 +346,9 @@ public class DataBaseRepositoryProcessor extends AbstractProcessor {
      * @return 首字母大写字符串
      */
     static String upperFirstLetter(final String s) {
-        if (StringUtils.isEmpty(s) || !Character.isLowerCase(s.charAt(0))) return s;
+        if (StringUtils.isEmpty(s) || !Character.isLowerCase(s.charAt(0))) {
+            return s;
+        }
         return String.valueOf((char) (s.charAt(0) - 32)) + s.substring(1);
     }
 }

@@ -163,6 +163,8 @@ public class InternalDBFragment extends XPageFragment {
                     ToastUtils.toast("事务执行失败！");
                 }
                 break;
+            default:
+                break;
         }
     }
 }

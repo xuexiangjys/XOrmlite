@@ -101,7 +101,9 @@ public class ExternalDBHelper extends OrmLiteSqliteOpenHelper {
      * @return 拼接的文件的路径
      */
     private String getFilePath(String dirPath, String fileName) {
-        if (TextUtils.isEmpty(dirPath)) return "";
+        if (TextUtils.isEmpty(dirPath)) {
+            return "";
+        }
 
         if (!dirPath.trim().endsWith(File.separator)) {
             dirPath = dirPath.trim() + File.separator;

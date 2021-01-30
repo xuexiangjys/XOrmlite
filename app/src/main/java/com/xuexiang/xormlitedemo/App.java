@@ -19,6 +19,8 @@ package com.xuexiang.xormlitedemo;
 import android.app.Application;
 import android.content.Context;
 
+import androidx.multidex.MultiDex;
+
 import com.xuexiang.xaop.XAOP;
 import com.xuexiang.xaop.util.PermissionUtils;
 import com.xuexiang.xormlite.ExternalDataBaseRepository;
@@ -28,10 +30,7 @@ import com.xuexiang.xormlite.enums.DataBaseType;
 import com.xuexiang.xormlite.logs.DBLog;
 import com.xuexiang.xormlitedemo.db.ExternalDataBase;
 import com.xuexiang.xormlitedemo.db.InternalDataBase;
-import com.xuexiang.xpage.AppPageConfig;
 import com.xuexiang.xpage.PageConfig;
-import com.xuexiang.xpage.PageConfiguration;
-import com.xuexiang.xpage.model.PageInfo;
 import com.xuexiang.xutil.XUtil;
 import com.xuexiang.xutil.common.StringUtils;
 import com.xuexiang.xutil.tip.ToastUtils;
@@ -47,6 +46,15 @@ import java.util.List;
  */
 @DataBase(name = "internal", type = DataBaseType.INTERNAL)
 public class App extends Application {
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        //解决4.x运行崩溃的问题
+        MultiDex.install(this);
+    }
+
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -54,11 +62,13 @@ public class App extends Application {
         init();
 
         InternalDataBaseRepository.getInstance()
-                .setIDatabase(new InternalDataBase())  //设置内部存储的数据库实现接口
+                //设置内部存储的数据库实现接口
+                .setIDatabase(new InternalDataBase())
                 .init(this);
 
         ExternalDataBaseRepository.getInstance()
-                .setIDatabase(new ExternalDataBase(  //设置外部存储的数据库实现接口
+                //设置外部存储的数据库实现接口
+                .setIDatabase(new ExternalDataBase(
                         ExternalDataBaseRepository.DATABASE_PATH,
                         ExternalDataBaseRepository.DATABASE_NAME,
                         ExternalDataBaseRepository.DATABASE_VERSION))
@@ -74,16 +84,12 @@ public class App extends Application {
         XUtil.init(this);
         XUtil.debug(true);
 
-        PageConfig.getInstance().setPageConfiguration(new PageConfiguration() { //页面注册
-            @Override
-            public List<PageInfo> registerPages(Context context) {
-                return AppPageConfig.getInstance().getPages(); //自动注册页面
-            }
-        }).debug("PageLog").enableWatcher(false).init(this);
+        PageConfig.getInstance().debug("PageLog").init(this);
 
-
-        XAOP.init(this); //初始化插件
-        XAOP.debug(true); //日志打印切片开启
+        //初始化插件
+        XAOP.init(this);
+        //日志打印切片开启
+        XAOP.debug(true);
         //设置动态申请权限切片 申请权限被拒绝的事件响应监听
         XAOP.setOnPermissionDeniedListener(new PermissionUtils.OnPermissionDeniedListener() {
             @Override

@@ -21,8 +21,8 @@ public final class DataBaseUtils {
     /**
      * 通过数据库表类名集合创建表
      *
-     * @param connectionSource
-     * @param tableClassNames 数据库表的类名集合
+     * @param connectionSource 连接池
+     * @param tableClassNames  数据库表的类名集合
      * @throws SQLException
      */
     public static void createTablesByClassNames(ConnectionSource connectionSource, List<String> tableClassNames) throws SQLException {
@@ -40,8 +40,8 @@ public final class DataBaseUtils {
     /**
      * 通过数据库表类集合创建表
      *
-     * @param connectionSource
-     * @param tableClasses 数据库表的类集合
+     * @param connectionSource 连接池
+     * @param tableClasses     数据库表的类集合
      * @throws SQLException
      */
     public static void createTablesByClasses(ConnectionSource connectionSource, List<Class<?>> tableClasses) throws SQLException {
@@ -55,8 +55,8 @@ public final class DataBaseUtils {
     /**
      * 通过数据库表类集合创建表
      *
-     * @param connectionSource
-     * @param tableClasses 数据库表的类集合
+     * @param connectionSource 连接池
+     * @param tableClasses     数据库表的类集合
      * @throws SQLException
      */
     public static void createTablesByClasses(ConnectionSource connectionSource, Class[] tableClasses) throws SQLException {

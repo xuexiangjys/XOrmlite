@@ -22,6 +22,7 @@ import android.view.View;
 import com.xuexiang.xaop.annotation.Permission;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.base.XPageContainerListFragment;
+import com.xuexiang.xpage.enums.CoreAnim;
 import com.xuexiang.xpage.utils.TitleBar;
 import com.xuexiang.xutil.common.ClickUtils;
 
@@ -34,7 +35,7 @@ import static com.xuexiang.xaop.consts.PermissionConsts.STORAGE;
  *     time   : 2018/5/10 上午12:39
  * </pre>
  */
-@Page(name = "XOrmlite数据库")
+@Page(name = "XOrmlite数据库", anim = CoreAnim.none)
 public class MainFragment extends XPageContainerListFragment {
     /**
      * 获取页面的类集合[使用@Page注解进行注册的页面]

@@ -12,6 +12,9 @@ android {
         versionCode 1
         versionName "1.0"
 
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+
     }
 
     if (isNeedPackage.toBoolean()) {
@@ -48,28 +51,41 @@ android {
     lintOptions {
         abortOnError false
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    configurations.all {
+        resolutionStrategy.force deps.gson
+    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation deps.support.app_compat
+    implementation deps.androidx.appcompat
+    implementation deps.androidx.recyclerview
     implementation project(':xormlite-runtime')
     annotationProcessor project(':xormlite-compiler')
 
 //    implementation 'com.github.xuexiangjys.XOrmlite:xormlite-runtime:1.0.1'
 //    annotationProcessor 'com.github.xuexiangjys.XOrmlite:xormlite-compiler:1.0.1'
 
-    implementation 'com.github.xuexiangjys.XUtil:xutil-core:1.1.8'
-    implementation 'com.github.xuexiangjys.XAOP:xaop-runtime:1.0.5'  //添加依赖
+    implementation 'com.github.xuexiangjys.XUtil:xutil-core:2.0.0'
+    implementation 'com.github.xuexiangjys.XAOP:xaop-runtime:1.1.0'  //添加依赖
 
     //XPage
-    implementation 'com.github.xuexiangjys.XPage:xpage-lib:2.3.0'
-    annotationProcessor 'com.github.xuexiangjys.XPage:xpage-compiler:2.3.0'
+    implementation 'com.github.xuexiangjys.XPage:xpage-lib:3.1.1'
+    annotationProcessor 'com.github.xuexiangjys.XPage:xpage-compiler:3.1.1'
     //butterknife的sdk
-    implementation 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.jakewharton:butterknife:10.2.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
 
-    implementation deps.support.recyclerview
+    // 数据库检测
+    debugImplementation 'com.glance.guolindev:glance:1.0.0-alpha02'
+    // LeakCanary内存泄漏检测
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.6'
     //下拉刷新
     implementation 'com.github.xuexiangjys.SmartRefreshLayout:refresh-header:1.1.5'
     implementation 'com.github.xuexiangjys.SmartRefreshLayout:refresh-layout:1.1.5'

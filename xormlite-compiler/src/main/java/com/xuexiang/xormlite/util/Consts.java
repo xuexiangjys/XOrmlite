@@ -31,7 +31,4 @@ public class Consts {
     // Log
     static final String PREFIX_OF_LOGGER = PROJECT + "::Compiler ";
 
-
-
-
 }
