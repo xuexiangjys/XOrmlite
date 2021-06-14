@@ -89,7 +89,7 @@ public class ExternalApp extends Application {
 
 2.使用`@DataBase`注册完后，请编译一下项目：build -> Rebuild Project，之后会自动生成数据库管理仓库: 数据库名 + DataBaseRepository 的Java文件。文件的生成路径如下：
 
-![xormlite_databaserepository.png](https://img.rruu.net/image/5f7dd078dff65)
+![xormlite_databaserepository.png](https://ss.im5i.com/2021/06/15/6RxXS.jpg)
 
 例如上面我们注册的数据库名为：external，自动生成的数据库管理仓库为 ExternalDataBaseRepository。
 
@@ -263,22 +263,20 @@ try {
 
 > 你的打赏是我维护的动力，我将会列出所有打赏人员的清单在下方作为凭证，打赏前请留下打赏项目的备注！
 
-![pay.png](https://img.rruu.net/image/5f871d00045da)
+![pay.png](https://ss.im5i.com/2021/06/14/6twG6.png)
 
 ## 微信公众号
 
 > 更多资讯内容，欢迎扫描关注我的个人微信公众号:【我的Android开源之旅】
 
-![gzh_weixin.jpg](https://img.rruu.net/image/5f871cfff3194)
+![gzh_weixin.jpg](https://ss.im5i.com/2021/06/14/65yoL.jpg)
 
 ## 联系方式
 
 [![](https://img.shields.io/badge/点击一键加入QQ交流群-602082750-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=9922861ef85c19f1575aecea0e8680f60d9386080a97ed310c971ae074998887)
 
-![qq_group.jpg](https://img.rruu.net/image/5f47eea68ed66)
 
-
-[demo-gif]: https://img.rruu.net/image/5f7dd07e9ba9b
+[demo-gif]: https://z3.ax1x.com/2021/06/15/2Hmclj.gif
 [download-svg]: https://img.shields.io/badge/downloads-1.6M-blue.svg
 [download-url]: https://github.com/xuexiangjys/XOrmlite/blob/master/apk/demo.apk?raw=true
-[download-img]: https://img.rruu.net/image/5f7dd078f2e76
+[download-img]: https://ss.im5i.com/2021/06/15/6Rmdj.png
